@@ -4,13 +4,14 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>מורה הנבוכים · בחירת גרסת עריכה</title>
-<meta property="og:title" content="מורה הנבוכים · 3 כיווני עריכה לבחירה"/>
-<meta property="og:description" content="3 אופציות עריכה לסרטון העדות. בחרו את האהובה עליכם."/>
+<meta property="og:title" content="מורה הנבוכים · הגרסה המשופרת לבחירה"/>
+<meta property="og:description" content="הגרסה המשופרת של סרטון העדות. נותר רק לבחור את צבע ההדגשה."/>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   :root{
     --aubergine:#4C1D95; --aubergine-deep:#3B1675; --teal:#0EA5BB; --teal-deep:#0987A0;
     --tangerine:#FF6B35; --ink:#0A0A0A; --paper:#FAFAFA; --gray:#4A4A4A; --gray-2:#6A6A6A; --line:#E5E5E5;
+    --v-teal:#117BA2; --v-burg:#9D2021;
   }
   *{ margin:0; padding:0; box-sizing:border-box; }
   html,body{ background:var(--paper); color:var(--ink); font-family:'Rubik','Heebo',sans-serif; }
@@ -30,24 +31,24 @@
 
   .strip{ background:var(--tangerine); height:6px; }
 
-  .intro{ max-width:1320px; margin:26px auto 0; padding:0 40px; text-align:center; }
+  .intro{ max-width:1080px; margin:26px auto 0; padding:0 40px; text-align:center; }
   .intro p{ font-size:20px; color:var(--ink); font-weight:600; line-height:1.7; }
   .intro p .sub{ font-size:17px; color:var(--gray-2); font-weight:500; }
 
-  /* 3-column landscape grid */
-  .grid{ max-width:1320px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  /* 2-column landscape grid */
+  .grid{ max-width:1080px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(2,1fr); gap:30px; }
   .card{ background:#fff; border:2px solid var(--line); border-radius:18px; overflow:hidden;
     display:flex; flex-direction:column; transition:border-color .15s, box-shadow .15s; }
   .card.sel{ border-color:var(--teal); box-shadow:0 12px 36px rgba(14,165,187,.28); }
-  .card .badge{ display:flex; align-items:center; gap:12px; padding:16px 20px; }
-  .card .badge .lt{ width:54px; height:54px; border-radius:13px; background:var(--teal); color:#fff;
-    font-family:'Plus Jakarta Sans'; font-weight:800; font-size:28px; display:flex; align-items:center; justify-content:center; }
-  .card.sel .badge .lt{ background:var(--teal-deep); }
-  .card .badge .nm{ font-weight:800; font-size:21px; color:var(--ink); }
-  .card .badge .nm small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:2px; }
+  .card .badge{ display:flex; align-items:center; gap:13px; padding:18px 22px; }
+  .card .badge .sw{ width:54px; height:54px; border-radius:13px; flex-shrink:0; border:2px solid rgba(0,0,0,.06); }
+  .card[data-opt="teal"] .badge .sw{ background:var(--v-teal); }
+  .card[data-opt="burg"] .badge .sw{ background:var(--v-burg); }
+  .card .badge .nm{ font-weight:800; font-size:23px; color:var(--ink); }
+  .card .badge .nm small{ display:block; font-weight:600; font-size:14.5px; color:var(--gray-2); margin-top:3px; }
   .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
-  .card .desc{ padding:12px 20px; font-size:13.5px; color:var(--gray); line-height:1.45; flex:1; }
-  .card .pick{ display:flex; align-items:center; gap:12px; padding:0 20px 20px; cursor:pointer; }
+  .card .desc{ padding:14px 22px; font-size:14.5px; color:var(--gray); line-height:1.5; flex:1; }
+  .card .pick{ display:flex; align-items:center; gap:12px; padding:0 22px 22px; cursor:pointer; }
   .card .pick .box{ width:30px; height:30px; border-radius:8px; border:2.5px solid var(--gray-2); flex-shrink:0;
     display:flex; align-items:center; justify-content:center; transition:.15s; }
   .card.sel .pick .box{ background:var(--teal); border-color:var(--teal); }
@@ -57,7 +58,7 @@
   .card.sel .pick label{ color:var(--teal-deep); }
 
   /* footer / submit */
-  .foot{ max-width:1320px; margin:30px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .foot{ max-width:1080px; margin:30px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
   .foot .chosen{ font-size:18px; font-weight:600; color:var(--gray); }
   .foot .chosen b{ color:var(--aubergine); font-weight:800; }
   .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px;
@@ -70,11 +71,9 @@
   .credit a .dot{ color:var(--tangerine); text-decoration:none; }
   .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
 
-  @media (max-width:900px){
+  @media (max-width:820px){
     .grid{ grid-template-columns:1fr; }
     .top{ flex-direction:column; align-items:flex-start; padding:24px; }
-    .top .ttl{ text-align:right; }
-    .top .ttl h1{ font-size:26px; }
   }
 </style>
 </head>
@@ -92,28 +91,21 @@
   <div class="strip"></div>
 
   <div class="intro">
-    <p>3 גרסאות עריכה שונות לסרטון - צפו ובחרו את הגרסה שאהבתם ביותר.<br/><span class="sub">לחצו על הכפתור כדי לשלוח לנו את הבחירה</span></p>
+    <p>הגרסה המשופרת של הסרטון, לפי ההערות שלכם.<br/><span class="sub">נותר רק לבחור את צבע ההדגשה (הכפתור והמדבקה): טורקיז או בורדו.</span></p>
   </div>
 
   <div class="grid">
-    <div class="card" data-opt="A">
-      <div class="badge"><div class="lt en">A</div></div>
-      <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור רכישה קבוע.</div>
+    <div class="card" data-opt="teal">
+      <div class="badge"><div class="sw"></div><div class="nm">הדגשה בטורקיז<small>כפתור ומדבקה בגוון טורקיז</small></div></div>
+      <video src="clips/D-teal.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">צבעוניות נקייה ומודרנית, עם דגש טורקיז בולט על הכפתור והמדבקה.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
-    <div class="card" data-opt="B">
-      <div class="badge"><div class="lt en">B</div></div>
-      <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">מסגרת אלגנטית ומכובדת, בתחושה ספרותית.</div>
-      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-    </div>
-
-    <div class="card" data-opt="C">
-      <div class="badge"><div class="lt en">C</div></div>
-      <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור רכישה קבועים.</div>
+    <div class="card" data-opt="burg">
+      <div class="badge"><div class="sw"></div><div class="nm">הדגשה בבורדו<small>כפתור ומדבקה בגוון הבורדו של המותג</small></div></div>
+      <video src="clips/D-burg.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">אותו עיצוב בדיוק, עם דגש בגוון הבורדו הקלאסי של המותג על הכפתור והמדבקה.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
   </div>
@@ -125,6 +117,7 @@
   <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
 
 <script>
+  var LABELS={teal:'טורקיז',burg:'בורדו'};
   var sel=null;
   var cards=document.querySelectorAll('.card');
   var chosen=document.getElementById('chosen');
@@ -133,7 +126,7 @@
     c.querySelector('.pick').addEventListener('click',function(){
       cards.forEach(function(x){x.classList.remove('sel');});
       c.classList.add('sel'); sel=c.getAttribute('data-opt');
-      chosen.innerHTML='בחרתם באופציה <b>'+sel+'</b>';
+      chosen.innerHTML='בחרתם בהדגשה <b>'+LABELS[sel]+'</b>';
       send.disabled=false;
     });
   });

@@ -18,7 +18,7 @@
   .wrap{ max-width:1100px; margin:30px auto; padding:0 36px; }
   .tally{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:30px; }
   .tcard{ background:#fff; border:2px solid var(--line); border-radius:16px; padding:22px; text-align:center; }
-  .tcard .lt{ width:50px; height:50px; border-radius:12px; background:var(--teal); color:#fff; font-family:'Plus Jakarta Sans'; font-weight:800; font-size:26px; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; }
+  .tcard .lt{ display:inline-block; min-width:50px; height:42px; line-height:42px; padding:0 18px; border-radius:11px; background:var(--teal); color:#fff; font-family:'Rubik'; font-weight:800; font-size:21px; margin:0 auto 12px; }
   .tcard .n{ font-family:'Plus Jakarta Sans'; font-weight:800; font-size:46px; color:var(--aubergine); line-height:1; }
   .tcard .lbl{ font-size:15px; color:var(--gray-2); margin-top:6px; }
   .tcard.lead{ border-color:var(--teal); box-shadow:0 10px 30px rgba(14,165,187,.2); }
@@ -50,22 +50,29 @@
 <script>
   var SB='https://opvkmbnazvzfavlkxwzo.supabase.co';
   var AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9wdmttYm5henZ6ZmF2bGt4d3pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MDIxNzcsImV4cCI6MjA5Mzk3ODE3N30.QdyxpMpbNOC1YhdZdTAV0z4CSEtFwtcdtUiacxD5RDI';
+  var LABELS={teal:'טורקיז',burg:'בורדו',A:'A',B:'B',C:'C'};
+  function lbl(c){ return LABELS[c]||c; }
   function fmt(t){ var d=new Date(t); return d.toLocaleString('he-IL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
   function load(){
     fetch(SB+'/rest/v1/moreh_choices?select=choice,created_at&order=created_at.desc',{headers:{'apikey':AK,'Authorization':'Bearer '+AK}})
     .then(function(r){return r.json();})
     .then(function(d){
-      var counts={A:0,B:0,C:0}; d.forEach(function(x){ if(counts[x.choice]!=null) counts[x.choice]++; });
-      var max=Math.max(counts.A,counts.B,counts.C,0);
+      // dynamic tally over whatever choice values exist (handles teal/burg + legacy A/B/C)
+      var counts={}, order=[];
+      d.forEach(function(x){ if(counts[x.choice]==null){ counts[x.choice]=0; order.push(x.choice); } counts[x.choice]++; });
+      order.sort();
+      var max=0; order.forEach(function(o){ if(counts[o]>max) max=counts[o]; });
       var tally=document.getElementById('tally'); tally.innerHTML='';
-      ['A','B','C'].forEach(function(o){
+      tally.style.gridTemplateColumns='repeat('+Math.max(order.length,1)+',1fr)';
+      if(!order.length){ tally.innerHTML='<div class="tcard"><div class="n">0</div><div class="lbl">בחירות</div></div>'; }
+      order.forEach(function(o){
         var lead=(counts[o]===max&&max>0)?' lead':'';
-        tally.innerHTML+='<div class="tcard'+lead+'"><div class="lt">'+o+'</div><div class="n">'+counts[o]+'</div><div class="lbl">בחירות</div></div>';
+        tally.innerHTML+='<div class="tcard'+lead+'"><div class="lt">'+lbl(o)+'</div><div class="n">'+counts[o]+'</div><div class="lbl">בחירות</div></div>';
       });
       document.getElementById('cnt').textContent='סה״כ '+d.length+' בחירות';
       var rows=document.getElementById('rows'); rows.innerHTML='';
       document.getElementById('empty').style.display=d.length?'none':'block';
-      d.forEach(function(x){ rows.innerHTML+='<tr><td><span class="opt">'+x.choice+'</span></td><td>'+fmt(x.created_at)+'</td></tr>'; });
+      d.forEach(function(x){ rows.innerHTML+='<tr><td><span class="opt">'+lbl(x.choice)+'</span></td><td>'+fmt(x.created_at)+'</td></tr>'; });
     })
     .catch(function(){ document.getElementById('cnt').textContent='שגיאה בטעינה'; });
   }

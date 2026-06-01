@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>מורה הנבוכים · בחירת גרסת עריכה</title>
+<meta property="og:title" content="מורה הנבוכים · 3 כיווני עריכה לבחירה"/>
+<meta property="og:description" content="3 אופציות עריכה לסרטון העדות. בחרו את האהובה עליכם."/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --aubergine:#4C1D95; --aubergine-deep:#3B1675; --teal:#0EA5BB; --teal-deep:#0987A0;
+    --tangerine:#FF6B35; --ink:#0A0A0A; --paper:#FAFAFA; --gray:#4A4A4A; --gray-2:#6A6A6A; --line:#E5E5E5;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:var(--paper); color:var(--ink); font-family:'Rubik','Heebo',sans-serif; }
+  .en,[lang="en"]{ font-family:'Plus Jakarta Sans',sans-serif; }
+  .num{ font-family:'Plus Jakarta Sans',sans-serif; direction:ltr; unicode-bidi:bidi-override; display:inline-block; }
+
+  /* header */
+  .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .top .client{ text-align:right; }
+  .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; color:var(--teal); }
+  .top .client .cl-task{ font-weight:500; font-size:18px; color:#D9CEEF; margin-top:6px; }
+  .top .logo{ text-align:left; }
+  .top .logo .logo-mark{ font-family:'Rubik'; font-weight:800; font-size:30px; line-height:1; }
+  .top .logo .logo-mark .dot{ color:var(--tangerine); }
+  .top .logo .logo-tag{ font-family:'Plus Jakarta Sans'; font-weight:700; font-size:13.5px; letter-spacing:.07em; color:#D9CEEF; margin-top:6px; }
+  .top .logo .logo-tag .y{ color:var(--teal); }
+
+  .strip{ background:var(--tangerine); height:6px; }
+
+  .intro{ max-width:1320px; margin:26px auto 0; padding:0 40px; text-align:center; }
+  .intro p{ font-size:20px; color:var(--ink); font-weight:600; line-height:1.7; }
+  .intro p .sub{ font-size:17px; color:var(--gray-2); font-weight:500; }
+
+  /* 3-column landscape grid */
+  .grid{ max-width:1320px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .card{ background:#fff; border:2px solid var(--line); border-radius:18px; overflow:hidden;
+    display:flex; flex-direction:column; transition:border-color .15s, box-shadow .15s; }
+  .card.sel{ border-color:var(--teal); box-shadow:0 12px 36px rgba(14,165,187,.28); }
+  .card .badge{ display:flex; align-items:center; gap:12px; padding:16px 20px; }
+  .card .badge .lt{ width:54px; height:54px; border-radius:13px; background:var(--teal); color:#fff;
+    font-family:'Plus Jakarta Sans'; font-weight:800; font-size:28px; display:flex; align-items:center; justify-content:center; }
+  .card.sel .badge .lt{ background:var(--teal-deep); }
+  .card .badge .nm{ font-weight:800; font-size:21px; color:var(--ink); }
+  .card .badge .nm small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:2px; }
+  .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
+  .card .desc{ padding:12px 20px; font-size:13.5px; color:var(--gray); line-height:1.45; flex:1; }
+  .card .pick{ display:flex; align-items:center; gap:12px; padding:0 20px 20px; cursor:pointer; }
+  .card .pick .box{ width:30px; height:30px; border-radius:8px; border:2.5px solid var(--gray-2); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:.15s; }
+  .card.sel .pick .box{ background:var(--teal); border-color:var(--teal); }
+  .card .pick .box svg{ width:18px; height:18px; opacity:0; }
+  .card.sel .pick .box svg{ opacity:1; }
+  .card .pick label{ font-weight:700; font-size:17px; color:var(--ink); cursor:pointer; }
+  .card.sel .pick label{ color:var(--teal-deep); }
+
+  /* footer / submit */
+  .foot{ max-width:1320px; margin:30px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .foot .chosen{ font-size:18px; font-weight:600; color:var(--gray); }
+  .foot .chosen b{ color:var(--aubergine); font-weight:800; }
+  .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px;
+    padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px; }
+  .send:hover{ background:#E85A28; }
+  .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
+  .credit{ background:var(--teal); color:#fff; text-align:center; font-size:16px; font-family:'Plus Jakarta Sans'; font-weight:600; padding:28px 20px; margin-top:40px; }
+  .credit a{ color:var(--ink); font-weight:800; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+  .credit a:hover{ color:#000; }
+  .credit a .dot{ color:var(--tangerine); text-decoration:none; }
+  .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
+
+  @media (max-width:900px){
+    .grid{ grid-template-columns:1fr; }
+    .top{ flex-direction:column; align-items:flex-start; padding:24px; }
+    .top .ttl{ text-align:right; }
+    .top .ttl h1{ font-size:26px; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="client">
+      <div class="cl-name">מפעל משנה תורה</div>
+      <div class="cl-task">מורה הנבוכים · בחירת גרסת עריכה</div>
+    </div>
+    <div class="logo">
+      <div class="logo-mark">אוריה ברמן<span class="dot">.</span></div>
+      <div class="logo-tag en">Strategy <span class="y">·</span> Creative <span class="y">·</span> Digital <span class="y">·</span> AI</div>
+    </div>
+  </div>
+  <div class="strip"></div>
+
+  <div class="intro">
+    <p>3 גרסאות עריכה שונות לסרטון - צפו ובחרו את הגרסה שאהבתם ביותר.<br/><span class="sub">לחצו על הכפתור כדי לשלוח לנו את הבחירה</span></p>
+  </div>
+
+  <div class="grid">
+    <div class="card" data-opt="A">
+      <div class="badge"><div class="lt en">A</div></div>
+      <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור רכישה קבוע.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <div class="card" data-opt="B">
+      <div class="badge"><div class="lt en">B</div></div>
+      <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">מסגרת אלגנטית ומכובדת, בתחושה ספרותית.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+
+    <div class="card" data-opt="C">
+      <div class="badge"><div class="lt en">C</div></div>
+      <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור רכישה קבועים.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
+    <button class="send" id="send" disabled>שמירת הבחירה ←</button>
+  </div>
+  <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
+
+<script>
+  var sel=null;
+  var cards=document.querySelectorAll('.card');
+  var chosen=document.getElementById('chosen');
+  var send=document.getElementById('send');
+  cards.forEach(function(c){
+    c.querySelector('.pick').addEventListener('click',function(){
+      cards.forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel'); sel=c.getAttribute('data-opt');
+      chosen.innerHTML='בחרתם באופציה <b>'+sel+'</b>';
+      send.disabled=false;
+    });
+  });
+  var SB='https://opvkmbnazvzfavlkxwzo.supabase.co';
+  var AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9wdmttYm5henZ6ZmF2bGt4d3pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MDIxNzcsImV4cCI6MjA5Mzk3ODE3N30.QdyxpMpbNOC1YhdZdTAV0z4CSEtFwtcdtUiacxD5RDI';
+  send.addEventListener('click',function(){
+    if(!sel) return;
+    send.disabled=true; send.textContent='שומר...';
+    fetch(SB+'/rest/v1/moreh_choices',{method:'POST',headers:{'apikey':AK,'Authorization':'Bearer '+AK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({choice:sel,ua:(navigator.userAgent||'').slice(0,120)})})
+      .then(function(r){ if(!r.ok) throw new Error(); chosen.innerHTML='<b style="color:var(--teal-deep)">הבחירה נשמרה בהצלחה. תודה רבה!</b>'; send.textContent='נשמר ✓'; })
+      .catch(function(){ send.disabled=false; send.textContent='שמירת הבחירה ←'; chosen.innerHTML='<b style="color:var(--tangerine)">שגיאה בשמירה, נסו שוב</b>'; });
+  });
+  document.getElementById('wlink').addEventListener('click',function(){
+    window.open('https://wa.me/972548825232?text='+encodeURIComponent('היי אוריה אהבתי את התוצרים, אשמח לדבר'),'_blank');
+  });
+</script>
+</body>
+</html>
