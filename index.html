@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>מורה הנבוכים · בחירת גרסת עריכה</title>
+<meta property="og:title" content="מורה הנבוכים · 3 כיווני עריכה לבחירה"/>
+<meta property="og:description" content="3 אופציות עריכה לסרטון העדות. בחרו את האהובה עליכם."/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --aubergine:#4C1D95; --aubergine-deep:#3B1675; --teal:#0EA5BB; --teal-deep:#0987A0;
+    --tangerine:#FF6B35; --ink:#0A0A0A; --paper:#FAFAFA; --gray:#4A4A4A; --gray-2:#6A6A6A; --line:#E5E5E5;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:var(--paper); color:var(--ink); font-family:'Rubik','Heebo',sans-serif; }
+  .en,[lang="en"]{ font-family:'Plus Jakarta Sans',sans-serif; }
+  .num{ font-family:'Plus Jakarta Sans',sans-serif; direction:ltr; unicode-bidi:bidi-override; display:inline-block; }
+
+  /* header */
+  .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .top .brand{ font-family:'Plus Jakarta Sans'; font-weight:800; font-size:24px; letter-spacing:.04em; }
+  .top .brand b{ color:var(--tangerine); }
+  .top .ttl{ text-align:left; }
+  .top .ttl h1{ font-weight:800; font-size:32px; line-height:1.1; }
+  .top .ttl h1 .y{ color:var(--teal); }
+  .top .ttl p{ font-weight:500; font-size:17px; color:#D9CEEF; margin-top:6px; }
+
+  .strip{ background:var(--tangerine); height:6px; }
+
+  .intro{ max-width:1320px; margin:26px auto 0; padding:0 40px; text-align:center; }
+  .intro p{ font-size:19px; color:var(--gray); font-weight:500; line-height:1.6; }
+  .intro b{ color:var(--aubergine); font-weight:700; }
+
+  /* 3-column landscape grid */
+  .grid{ max-width:1320px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .card{ background:#fff; border:2px solid var(--line); border-radius:18px; overflow:hidden;
+    display:flex; flex-direction:column; transition:border-color .15s, box-shadow .15s; }
+  .card.sel{ border-color:var(--teal); box-shadow:0 12px 36px rgba(14,165,187,.28); }
+  .card .badge{ display:flex; align-items:center; gap:12px; padding:16px 20px; }
+  .card .badge .lt{ width:46px; height:46px; border-radius:11px; background:var(--aubergine); color:#fff;
+    font-family:'Plus Jakarta Sans'; font-weight:800; font-size:24px; display:flex; align-items:center; justify-content:center; }
+  .card.sel .badge .lt{ background:var(--teal); }
+  .card .badge .nm{ font-weight:800; font-size:21px; color:var(--ink); }
+  .card .badge .nm small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:2px; }
+  .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
+  .card .desc{ padding:16px 20px; font-size:15px; color:var(--gray); line-height:1.55; flex:1; }
+  .card .pick{ display:flex; align-items:center; gap:12px; padding:0 20px 20px; cursor:pointer; }
+  .card .pick .box{ width:30px; height:30px; border-radius:8px; border:2.5px solid var(--gray-2); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:.15s; }
+  .card.sel .pick .box{ background:var(--teal); border-color:var(--teal); }
+  .card .pick .box svg{ width:18px; height:18px; opacity:0; }
+  .card.sel .pick .box svg{ opacity:1; }
+  .card .pick label{ font-weight:700; font-size:17px; color:var(--ink); cursor:pointer; }
+  .card.sel .pick label{ color:var(--teal-deep); }
+
+  /* footer / submit */
+  .foot{ max-width:1320px; margin:30px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .foot .chosen{ font-size:18px; font-weight:600; color:var(--gray); }
+  .foot .chosen b{ color:var(--aubergine); font-weight:800; }
+  .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px;
+    padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px; }
+  .send:hover{ background:#E85A28; }
+  .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
+  .credit{ text-align:center; color:var(--gray-2); font-size:13px; padding-bottom:34px; }
+  .credit b{ font-family:'Plus Jakarta Sans'; color:var(--aubergine); }
+
+  @media (max-width:900px){
+    .grid{ grid-template-columns:1fr; }
+    .top{ flex-direction:column; align-items:flex-start; padding:24px; }
+    .top .ttl{ text-align:right; }
+    .top .ttl h1{ font-size:26px; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand en">URIA<b>.</b>BERMAN</div>
+    <div class="ttl">
+      <h1>מורה <span class="y">הנבוכים</span> · בחירת גרסת עריכה</h1>
+      <p>עדות ד״ר הלל גרשוני · קמפיין ממומן · מפעל משנה תורה</p>
+    </div>
+  </div>
+  <div class="strip"></div>
+
+  <div class="intro">
+    <p>הכנו <b>שלוש גרסאות עריכה</b> שונות לסרטון העדות. צפו בכולן, ובחרו את הגרסה שאהבתם ביותר.<br/>בסיום לחצו על הכפתור כדי לשלוח לנו את הבחירה.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card" data-opt="A">
+      <div class="badge"><div class="lt en">A</div><div class="nm">מודרני · פלטת המותג<small>טורקיז נקי, קריאה לפעולה קבועה</small></div></div>
+      <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">סגנון נקי ומודרני בצבעי האתר. כתוביות דינמיות שמדגישות כל מילה, פס מותג עליון, וסטריפ תחתון קבוע עם הספר וכפתור הרכישה.</div>
+      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+    </div>
+
+    <div class="card" data-opt="B">
+      <div class="badge"><div class="lt en">B</div><div class="nm">קלאסי · מכובד<small>מסגרת מותגית, אווירה ספרותית</small></div></div>
+      <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">מסגרת מכובדת בצבעי המותג, פס עליון אלגנטי ותחושה ספרותית-אמינה. כתוביות נקיות בהדגשה רכה, וסטריפ תחתון עם הספר וכפתור הרכישה.</div>
+      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+    </div>
+
+    <div class="card" data-opt="C">
+      <div class="badge"><div class="lt en">C</div><div class="nm">דינמי · CTA קבוע<small>וידאו גדול, שם הדובר בולט</small></div></div>
+      <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
+      <div class="desc">וידאו גדול ונועז, שם הדובר בולט לאורך כל הסרטון, וכתוביות דינמיות. הספר וכפתור הרכישה נוכחים בתחתית כל הזמן, להמרה מקסימלית.</div>
+      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
+    <button class="send" id="send" disabled>שליחת הבחירה ←</button>
+  </div>
+  <div class="credit">הופק על ידי <b>Uria Berman</b> · Creative &amp; Social</div>
+
+<script>
+  var sel=null;
+  var cards=document.querySelectorAll('.card');
+  var chosen=document.getElementById('chosen');
+  var send=document.getElementById('send');
+  cards.forEach(function(c){
+    c.querySelector('.pick').addEventListener('click',function(){
+      cards.forEach(function(x){x.classList.remove('sel');});
+      c.classList.add('sel'); sel=c.getAttribute('data-opt');
+      chosen.innerHTML='בחרתם באופציה <b>'+sel+'</b>';
+      send.disabled=false;
+    });
+  });
+  send.addEventListener('click',function(){
+    if(!sel) return;
+    var names={A:'מודרני (פלטת המותג)',B:'קלאסי מכובד',C:'דינמי CTA קבוע'};
+    var msg='היי אוריה! בחרנו בגרסת העריכה של מורה הנבוכים: אופציה '+sel+' · '+names[sel]+'.';
+    window.open('https://wa.me/972548825232?text='+encodeURIComponent(msg),'_blank');
+  });
+</script>
+</body>
+</html>
