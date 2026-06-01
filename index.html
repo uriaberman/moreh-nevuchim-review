@@ -4,8 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>מורה הנבוכים · בחירת גרסת עריכה</title>
-<meta property="og:title" content="מורה הנבוכים · הגרסה המשופרת לבחירה"/>
-<meta property="og:description" content="הגרסה המשופרת של סרטון העדות. נותר רק לבחור את צבע ההדגשה."/>
+<meta property="og:title" content="מורה הנבוכים · הגרסאות המשופרות לבחירה"/>
+<meta property="og:description" content="2 סרטוני העדות בגרסה המשופרת. בחרו את צבע ההדגשה לקמפיין."/>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
   :root{
@@ -16,9 +16,7 @@
   *{ margin:0; padding:0; box-sizing:border-box; }
   html,body{ background:var(--paper); color:var(--ink); font-family:'Rubik','Heebo',sans-serif; }
   .en,[lang="en"]{ font-family:'Plus Jakarta Sans',sans-serif; }
-  .num{ font-family:'Plus Jakarta Sans',sans-serif; direction:ltr; unicode-bidi:bidi-override; display:inline-block; }
 
-  /* header */
   .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
   .top .client{ text-align:right; }
   .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; color:var(--teal); }
@@ -28,51 +26,55 @@
   .top .logo .logo-mark .dot{ color:var(--tangerine); }
   .top .logo .logo-tag{ font-family:'Plus Jakarta Sans'; font-weight:700; font-size:13.5px; letter-spacing:.07em; color:#D9CEEF; margin-top:6px; }
   .top .logo .logo-tag .y{ color:var(--teal); }
-
   .strip{ background:var(--tangerine); height:6px; }
 
-  .intro{ max-width:1080px; margin:26px auto 0; padding:0 40px; text-align:center; }
+  .intro{ max-width:980px; margin:26px auto 0; padding:0 40px; text-align:center; }
   .intro p{ font-size:20px; color:var(--ink); font-weight:600; line-height:1.7; }
   .intro p .sub{ font-size:17px; color:var(--gray-2); font-weight:500; }
 
-  /* 2-column landscape grid */
-  .grid{ max-width:1080px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(2,1fr); gap:30px; }
-  .card{ background:#fff; border:2px solid var(--line); border-radius:18px; overflow:hidden;
-    display:flex; flex-direction:column; transition:border-color .15s, box-shadow .15s; }
-  .card.sel{ border-color:var(--teal); box-shadow:0 12px 36px rgba(14,165,187,.28); }
-  .card .badge{ display:flex; align-items:center; gap:13px; padding:18px 22px; }
-  .card .badge .sw{ width:54px; height:54px; border-radius:13px; flex-shrink:0; border:2px solid rgba(0,0,0,.06); }
-  .card[data-opt="teal"] .badge .sw{ background:var(--v-teal); }
-  .card[data-opt="burg"] .badge .sw{ background:var(--v-burg); }
-  .card .badge .nm{ font-weight:800; font-size:23px; color:var(--ink); }
-  .card .badge .nm small{ display:block; font-weight:600; font-size:14.5px; color:var(--gray-2); margin-top:3px; }
-  .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
-  .card .desc{ padding:14px 22px; font-size:14.5px; color:var(--gray); line-height:1.5; flex:1; }
-  .card .pick{ display:flex; align-items:center; gap:12px; padding:0 22px 22px; cursor:pointer; }
-  .card .pick .box{ width:30px; height:30px; border-radius:8px; border:2.5px solid var(--gray-2); flex-shrink:0;
-    display:flex; align-items:center; justify-content:center; transition:.15s; }
-  .card.sel .pick .box{ background:var(--teal); border-color:var(--teal); }
-  .card .pick .box svg{ width:18px; height:18px; opacity:0; }
-  .card.sel .pick .box svg{ opacity:1; }
-  .card .pick label{ font-weight:700; font-size:17px; color:var(--ink); cursor:pointer; }
-  .card.sel .pick label{ color:var(--teal-deep); }
+  .wrap{ max-width:900px; margin:8px auto 0; padding:0 40px; }
+  .speaker{ margin-top:34px; }
+  .speaker .sp-head{ display:flex; align-items:center; gap:12px; margin-bottom:16px; border-right:5px solid var(--aubergine); padding-right:14px; }
+  .speaker .sp-head .sp-n{ font-weight:800; font-size:23px; color:var(--aubergine); }
+  .speaker .sp-head .sp-t{ font-weight:600; font-size:16px; color:var(--gray-2); }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .vcard{ background:#fff; border:2px solid var(--line); border-radius:16px; overflow:hidden; transition:border-color .15s, box-shadow .15s; }
+  .vcard .tag{ display:flex; align-items:center; gap:9px; padding:12px 16px; font-weight:700; font-size:16px; color:var(--ink); }
+  .vcard .tag .sw{ width:22px; height:22px; border-radius:6px; border:2px solid rgba(0,0,0,.06); }
+  .vcard.color-teal .tag .sw{ background:var(--v-teal); }
+  .vcard.color-burg .tag .sw{ background:var(--v-burg); }
+  .vcard video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
+  body[data-sel="teal"] .vcard.color-teal{ border-color:var(--teal); box-shadow:0 10px 28px rgba(14,165,187,.26); }
+  body[data-sel="burg"] .vcard.color-burg{ border-color:var(--v-burg); box-shadow:0 10px 28px rgba(157,32,33,.22); }
 
-  /* footer / submit */
-  .foot{ max-width:1080px; margin:30px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .choose-wrap{ max-width:900px; margin:44px auto 0; padding:0 40px; }
+  .choose-ttl{ text-align:center; font-weight:800; font-size:22px; color:var(--aubergine); margin-bottom:18px; }
+  .choose{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .opt{ border:2.5px solid var(--line); border-radius:16px; padding:22px; cursor:pointer; display:flex; align-items:center; gap:14px; background:#fff; transition:.15s; }
+  .opt .sw{ width:44px; height:44px; border-radius:11px; flex-shrink:0; }
+  .opt[data-c="teal"] .sw{ background:var(--v-teal); }
+  .opt[data-c="burg"] .sw{ background:var(--v-burg); }
+  .opt .lbl{ font-weight:800; font-size:20px; color:var(--ink); }
+  .opt .lbl small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:3px; }
+  .opt .chk{ margin-right:auto; width:28px; height:28px; border-radius:8px; border:2.5px solid var(--gray-2); display:flex; align-items:center; justify-content:center; transition:.15s; }
+  .opt .chk svg{ width:17px; height:17px; opacity:0; }
+  body[data-sel="teal"] .opt[data-c="teal"], body[data-sel="burg"] .opt[data-c="burg"]{ border-color:var(--teal); background:#F2FBFD; }
+  body[data-sel="teal"] .opt[data-c="teal"] .chk, body[data-sel="burg"] .opt[data-c="burg"] .chk{ background:var(--teal); border-color:var(--teal); }
+  body[data-sel="teal"] .opt[data-c="teal"] .chk svg, body[data-sel="burg"] .opt[data-c="burg"] .chk svg{ opacity:1; }
+
+  .foot{ max-width:900px; margin:28px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
   .foot .chosen{ font-size:18px; font-weight:600; color:var(--gray); }
   .foot .chosen b{ color:var(--aubergine); font-weight:800; }
-  .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px;
-    padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px; }
+  .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px; padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; }
   .send:hover{ background:#E85A28; }
   .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
   .credit{ background:var(--teal); color:#fff; text-align:center; font-size:16px; font-family:'Plus Jakarta Sans'; font-weight:600; padding:28px 20px; margin-top:40px; }
   .credit a{ color:var(--ink); font-weight:800; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
-  .credit a:hover{ color:#000; }
   .credit a .dot{ color:var(--tangerine); text-decoration:none; }
   .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
 
-  @media (max-width:820px){
-    .grid{ grid-template-columns:1fr; }
+  @media (max-width:760px){
+    .pair{ grid-template-columns:1fr; } .choose{ grid-template-columns:1fr; }
     .top{ flex-direction:column; align-items:flex-start; padding:24px; }
   }
 </style>
@@ -91,27 +93,37 @@
   <div class="strip"></div>
 
   <div class="intro">
-    <p>הגרסה המשופרת של הסרטון, לפי ההערות שלכם.<br/><span class="sub">נותר רק לבחור את צבע ההדגשה (הכפתור והמדבקה): טורקיז או בורדו.</span></p>
+    <p>שני סרטוני העדות בגרסה המשופרת, לפי ההערות שלכם.<br/><span class="sub">כל סרטון מוצג בשתי אפשרויות צבע. בחרו את צבע ההדגשה האחיד לקמפיין (טורקיז או בורדו).</span></p>
   </div>
 
-  <div class="grid">
-    <div class="card" data-opt="teal">
-      <div class="badge"><div class="sw"></div><div class="nm">הדגשה בטורקיז<small>כפתור ומדבקה בגוון טורקיז</small></div></div>
-      <video src="clips/D-teal.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">צבעוניות נקייה ומודרנית, עם דגש טורקיז בולט על הכפתור והמדבקה.</div>
-      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+  <div class="wrap">
+    <div class="speaker">
+      <div class="sp-head"><span class="sp-n">סרטון 1 · ד״ר הלל גרשוני</span><span class="sp-t">מתרגם הספר</span></div>
+      <div class="pair">
+        <div class="vcard color-teal"><div class="tag"><span class="sw"></span>הדגשה בטורקיז</div><video src="clips/D-teal.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="vcard color-burg"><div class="tag"><span class="sw"></span>הדגשה בבורדו</div><video src="clips/D-burg.mp4" controls playsinline preload="metadata"></video></div>
+      </div>
     </div>
 
-    <div class="card" data-opt="burg">
-      <div class="badge"><div class="sw"></div><div class="nm">הדגשה בבורדו<small>כפתור ומדבקה בגוון הבורדו של המותג</small></div></div>
-      <video src="clips/D-burg.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">אותו עיצוב בדיוק, עם דגש בגוון הבורדו הקלאסי של המותג על הכפתור והמדבקה.</div>
-      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div class="speaker">
+      <div class="sp-head"><span class="sp-n">סרטון 2 · פרופ׳ רפאל מינס</span><span class="sp-t">ראש המעבדה לביו-אלקטרומגנטיות, אוניברסיטת אריאל</span></div>
+      <div class="pair">
+        <div class="vcard color-teal"><div class="tag"><span class="sw"></span>הדגשה בטורקיז</div><video src="clips/M-teal.mp4" controls playsinline preload="metadata"></video></div>
+        <div class="vcard color-burg"><div class="tag"><span class="sw"></span>הדגשה בבורדו</div><video src="clips/M-burg.mp4" controls playsinline preload="metadata"></video></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="choose-wrap">
+    <div class="choose-ttl">איזה צבע הדגשה תרצו לקמפיין?</div>
+    <div class="choose">
+      <div class="opt" data-c="teal"><span class="sw"></span><span class="lbl">הדגשה בטורקיז<small>כפתור ומדבקה בגוון טורקיז</small></span><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <div class="opt" data-c="burg"><span class="sw"></span><span class="lbl">הדגשה בבורדו<small>כפתור ומדבקה בגוון הבורדו של המותג</small></span><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
     </div>
   </div>
 
   <div class="foot">
-    <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
+    <span class="chosen" id="chosen">בחרו צבע כדי להמשיך</span>
     <button class="send" id="send" disabled>שמירת הבחירה ←</button>
   </div>
   <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
@@ -119,13 +131,12 @@
 <script>
   var LABELS={teal:'טורקיז',burg:'בורדו'};
   var sel=null;
-  var cards=document.querySelectorAll('.card');
   var chosen=document.getElementById('chosen');
   var send=document.getElementById('send');
-  cards.forEach(function(c){
-    c.querySelector('.pick').addEventListener('click',function(){
-      cards.forEach(function(x){x.classList.remove('sel');});
-      c.classList.add('sel'); sel=c.getAttribute('data-opt');
+  document.querySelectorAll('.opt').forEach(function(o){
+    o.addEventListener('click',function(){
+      sel=o.getAttribute('data-c');
+      document.body.setAttribute('data-sel',sel);
       chosen.innerHTML='בחרתם בהדגשה <b>'+LABELS[sel]+'</b>';
       send.disabled=false;
     });
