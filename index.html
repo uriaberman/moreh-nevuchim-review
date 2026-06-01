@@ -46,7 +46,7 @@
   .card .badge .nm{ font-weight:800; font-size:21px; color:var(--ink); }
   .card .badge .nm small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:2px; }
   .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
-  .card .desc{ padding:16px 20px; font-size:15px; color:var(--gray); line-height:1.55; flex:1; }
+  .card .desc{ padding:12px 20px; font-size:13.5px; color:var(--gray); line-height:1.45; flex:1; }
   .card .pick{ display:flex; align-items:center; gap:12px; padding:0 20px 20px; cursor:pointer; }
   .card .pick .box{ width:30px; height:30px; border-radius:8px; border:2.5px solid var(--gray-2); flex-shrink:0;
     display:flex; align-items:center; justify-content:center; transition:.15s; }
@@ -65,9 +65,9 @@
   .send:hover{ background:#E85A28; }
   .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
   .credit{ background:var(--teal); color:#fff; text-align:center; font-size:16px; font-family:'Plus Jakarta Sans'; font-weight:600; padding:28px 20px; margin-top:40px; }
-  .credit a{ color:#fff; font-weight:800; text-decoration:none; cursor:pointer; }
-  .credit a:hover{ text-decoration:underline; }
-  .credit a .dot{ color:var(--tangerine); }
+  .credit a{ color:var(--ink); font-weight:800; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+  .credit a:hover{ color:#000; }
+  .credit a .dot{ color:var(--tangerine); text-decoration:none; }
   .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
 
   @media (max-width:900px){
@@ -92,28 +92,28 @@
   <div class="strip"></div>
 
   <div class="intro">
-    <p>הכנו 3 גרסאות עריכה שונות לסרטון. צפו בכולן, ובחרו את הגרסה שאהבתם ביותר.<br/><span class="sub">לחצו על הכפתור כדי לשלוח לנו את הבחירה.</span></p>
+    <p>3 גרסאות עריכה שונות לסרטון - צפו ובחרו את הגרסה שאהבתם ביותר.<br/><span class="sub">לחצו על הכפתור כדי לשלוח לנו את הבחירה</span></p>
   </div>
 
   <div class="grid">
     <div class="card" data-opt="A">
       <div class="badge"><div class="lt en">A</div></div>
       <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור הרכישה שמלווה לכל אורך הסרטון.</div>
+      <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור רכישה קבוע.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="B">
       <div class="badge"><div class="lt en">B</div></div>
       <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">מסגרת אלגנטית ומכובדת בתחושה ספרותית, שמתאימה לעולם התוכן של הספר.</div>
+      <div class="desc">מסגרת אלגנטית ומכובדת, בתחושה ספרותית.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="C">
       <div class="badge"><div class="lt en">C</div></div>
       <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור הרכישה שמופיעים לכל אורך הסרטון.</div>
+      <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור רכישה קבועים.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
   </div>
@@ -122,7 +122,7 @@
     <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
     <button class="send" id="send" disabled>שליחת הבחירה ←</button>
   </div>
-  <div class="credit en">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
+  <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
 
 <script>
   var sel=null;
