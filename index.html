@@ -19,18 +19,20 @@
 
   /* header */
   .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
-  .top .brand{ font-family:'Plus Jakarta Sans'; font-weight:800; font-size:24px; letter-spacing:.04em; }
-  .top .brand b{ color:var(--tangerine); }
-  .top .ttl{ text-align:left; }
-  .top .ttl h1{ font-weight:800; font-size:32px; line-height:1.1; }
-  .top .ttl h1 .y{ color:var(--teal); }
-  .top .ttl p{ font-weight:500; font-size:17px; color:#D9CEEF; margin-top:6px; }
+  .top .client{ text-align:right; }
+  .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; }
+  .top .client .cl-task{ font-weight:500; font-size:18px; color:#D9CEEF; margin-top:6px; }
+  .top .logo{ text-align:left; }
+  .top .logo .logo-mark{ font-family:'Rubik'; font-weight:800; font-size:30px; line-height:1; }
+  .top .logo .logo-mark .dot{ color:var(--tangerine); }
+  .top .logo .logo-tag{ font-family:'Plus Jakarta Sans'; font-weight:700; font-size:13.5px; letter-spacing:.07em; color:#D9CEEF; margin-top:6px; }
+  .top .logo .logo-tag .y{ color:var(--teal); }
 
   .strip{ background:var(--tangerine); height:6px; }
 
   .intro{ max-width:1320px; margin:26px auto 0; padding:0 40px; text-align:center; }
-  .intro p{ font-size:19px; color:var(--gray); font-weight:500; line-height:1.6; }
-  .intro b{ color:var(--aubergine); font-weight:700; }
+  .intro p{ font-size:20px; color:var(--ink); font-weight:600; line-height:1.7; }
+  .intro p .sub{ font-size:17px; color:var(--gray-2); font-weight:500; }
 
   /* 3-column landscape grid */
   .grid{ max-width:1320px; margin:24px auto 0; padding:0 40px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
@@ -62,8 +64,11 @@
     padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px; }
   .send:hover{ background:#E85A28; }
   .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
-  .credit{ text-align:center; color:var(--gray-2); font-size:13px; padding-bottom:34px; }
-  .credit b{ font-family:'Plus Jakarta Sans'; color:var(--aubergine); }
+  .credit{ text-align:center; color:var(--gray-2); font-size:15px; font-family:'Plus Jakarta Sans'; font-weight:600; padding-bottom:42px; }
+  .credit a{ color:var(--aubergine); font-weight:800; text-decoration:none; cursor:pointer; }
+  .credit a:hover{ text-decoration:underline; }
+  .credit a .dot{ color:var(--tangerine); }
+  .credit .ctag{ display:block; font-size:12px; letter-spacing:.08em; color:var(--gray-2); font-weight:600; margin-top:6px; }
 
   @media (max-width:900px){
     .grid{ grid-template-columns:1fr; }
@@ -75,38 +80,41 @@
 </head>
 <body>
   <div class="top">
-    <div class="brand en">URIA<b>.</b>BERMAN</div>
-    <div class="ttl">
-      <h1>מורה <span class="y">הנבוכים</span> · בחירת גרסת עריכה</h1>
-      <p>עדות ד״ר הלל גרשוני · קמפיין ממומן · מפעל משנה תורה</p>
+    <div class="client">
+      <div class="cl-name">מפעל משנה תורה</div>
+      <div class="cl-task">מורה הנבוכים · בחירת גרסת עריכה</div>
+    </div>
+    <div class="logo">
+      <div class="logo-mark">אוריה ברמן<span class="dot">.</span></div>
+      <div class="logo-tag en">Strategy <span class="y">·</span> Creative <span class="y">·</span> Digital <span class="y">·</span> AI</div>
     </div>
   </div>
   <div class="strip"></div>
 
   <div class="intro">
-    <p>הכנו <b>שלוש גרסאות עריכה</b> שונות לסרטון העדות. צפו בכולן, ובחרו את הגרסה שאהבתם ביותר.<br/>בסיום לחצו על הכפתור כדי לשלוח לנו את הבחירה.</p>
+    <p>הכנו 3 גרסאות עריכה שונות לסרטון. צפו בכולן, ובחרו את הגרסה שאהבתם ביותר.<br/><span class="sub">לחצו על הכפתור כדי לשלוח לנו את הבחירה.</span></p>
   </div>
 
   <div class="grid">
     <div class="card" data-opt="A">
-      <div class="badge"><div class="lt en">A</div><div class="nm">מודרני · פלטת המותג<small>טורקיז נקי, קריאה לפעולה קבועה</small></div></div>
+      <div class="badge"><div class="lt en">A</div><div class="nm">אופציה A</div></div>
       <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">סגנון נקי ומודרני בצבעי האתר. כתוביות דינמיות שמדגישות כל מילה, פס מותג עליון, וסטריפ תחתון קבוע עם הספר וכפתור הרכישה.</div>
-      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+      <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור הרכישה שמלווה לכל אורך הסרטון.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="B">
-      <div class="badge"><div class="lt en">B</div><div class="nm">קלאסי · מכובד<small>מסגרת מותגית, אווירה ספרותית</small></div></div>
+      <div class="badge"><div class="lt en">B</div><div class="nm">אופציה B</div></div>
       <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">מסגרת מכובדת בצבעי המותג, פס עליון אלגנטי ותחושה ספרותית-אמינה. כתוביות נקיות בהדגשה רכה, וסטריפ תחתון עם הספר וכפתור הרכישה.</div>
-      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+      <div class="desc">מסגרת אלגנטית ומכובדת בתחושה ספרותית, שמתאימה לעולם התוכן של הספר.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="C">
-      <div class="badge"><div class="lt en">C</div><div class="nm">דינמי · CTA קבוע<small>וידאו גדול, שם הדובר בולט</small></div></div>
+      <div class="badge"><div class="lt en">C</div><div class="nm">אופציה C</div></div>
       <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
-      <div class="desc">וידאו גדול ונועז, שם הדובר בולט לאורך כל הסרטון, וכתוביות דינמיות. הספר וכפתור הרכישה נוכחים בתחתית כל הזמן, להמרה מקסימלית.</div>
-      <div class="pick"><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><label>בחרו באופציה זו</label></div>
+      <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור הרכישה שמופיעים לכל אורך הסרטון.</div>
+      <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
   </div>
 
@@ -114,7 +122,7 @@
     <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
     <button class="send" id="send" disabled>שליחת הבחירה ←</button>
   </div>
-  <div class="credit">הופק על ידי <b>Uria Berman</b> · Creative &amp; Social</div>
+  <div class="credit en">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
 
 <script>
   var sel=null;
@@ -131,9 +139,11 @@
   });
   send.addEventListener('click',function(){
     if(!sel) return;
-    var names={A:'מודרני (פלטת המותג)',B:'קלאסי מכובד',C:'דינמי CTA קבוע'};
-    var msg='היי אוריה! בחרנו בגרסת העריכה של מורה הנבוכים: אופציה '+sel+' · '+names[sel]+'.';
+    var msg='היי אוריה! בחרנו בגרסת העריכה של מורה הנבוכים: אופציה '+sel+'.';
     window.open('https://wa.me/972548825232?text='+encodeURIComponent(msg),'_blank');
+  });
+  document.getElementById('wlink').addEventListener('click',function(){
+    window.open('https://wa.me/972548825232?text='+encodeURIComponent('היי אוריה אהבתי את התוצרים, אשמח לדבר'),'_blank');
   });
 </script>
 </body>
