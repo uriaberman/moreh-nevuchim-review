@@ -20,7 +20,7 @@
   /* header */
   .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
   .top .client{ text-align:right; }
-  .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; }
+  .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; color:var(--teal); }
   .top .client .cl-task{ font-weight:500; font-size:18px; color:#D9CEEF; margin-top:6px; }
   .top .logo{ text-align:left; }
   .top .logo .logo-mark{ font-family:'Rubik'; font-weight:800; font-size:30px; line-height:1; }
@@ -40,9 +40,9 @@
     display:flex; flex-direction:column; transition:border-color .15s, box-shadow .15s; }
   .card.sel{ border-color:var(--teal); box-shadow:0 12px 36px rgba(14,165,187,.28); }
   .card .badge{ display:flex; align-items:center; gap:12px; padding:16px 20px; }
-  .card .badge .lt{ width:46px; height:46px; border-radius:11px; background:var(--aubergine); color:#fff;
-    font-family:'Plus Jakarta Sans'; font-weight:800; font-size:24px; display:flex; align-items:center; justify-content:center; }
-  .card.sel .badge .lt{ background:var(--teal); }
+  .card .badge .lt{ width:54px; height:54px; border-radius:13px; background:var(--teal); color:#fff;
+    font-family:'Plus Jakarta Sans'; font-weight:800; font-size:28px; display:flex; align-items:center; justify-content:center; }
+  .card.sel .badge .lt{ background:var(--teal-deep); }
   .card .badge .nm{ font-weight:800; font-size:21px; color:var(--ink); }
   .card .badge .nm small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:2px; }
   .card video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
@@ -64,11 +64,11 @@
     padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:10px; }
   .send:hover{ background:#E85A28; }
   .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
-  .credit{ text-align:center; color:var(--gray-2); font-size:15px; font-family:'Plus Jakarta Sans'; font-weight:600; padding-bottom:42px; }
-  .credit a{ color:var(--aubergine); font-weight:800; text-decoration:none; cursor:pointer; }
+  .credit{ background:var(--teal); color:#fff; text-align:center; font-size:16px; font-family:'Plus Jakarta Sans'; font-weight:600; padding:28px 20px; margin-top:40px; }
+  .credit a{ color:#fff; font-weight:800; text-decoration:none; cursor:pointer; }
   .credit a:hover{ text-decoration:underline; }
   .credit a .dot{ color:var(--tangerine); }
-  .credit .ctag{ display:block; font-size:12px; letter-spacing:.08em; color:var(--gray-2); font-weight:600; margin-top:6px; }
+  .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
 
   @media (max-width:900px){
     .grid{ grid-template-columns:1fr; }
@@ -97,21 +97,21 @@
 
   <div class="grid">
     <div class="card" data-opt="A">
-      <div class="badge"><div class="lt en">A</div><div class="nm">אופציה A</div></div>
+      <div class="badge"><div class="lt en">A</div></div>
       <video src="clips/A.mp4" controls playsinline preload="metadata"></video>
       <div class="desc">עיצוב נקי ומודרני בצבעי המותג, עם כפתור הרכישה שמלווה לכל אורך הסרטון.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="B">
-      <div class="badge"><div class="lt en">B</div><div class="nm">אופציה B</div></div>
+      <div class="badge"><div class="lt en">B</div></div>
       <video src="clips/B.mp4" controls playsinline preload="metadata"></video>
       <div class="desc">מסגרת אלגנטית ומכובדת בתחושה ספרותית, שמתאימה לעולם התוכן של הספר.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
 
     <div class="card" data-opt="C">
-      <div class="badge"><div class="lt en">C</div><div class="nm">אופציה C</div></div>
+      <div class="badge"><div class="lt en">C</div></div>
       <video src="clips/C.mp4" controls playsinline preload="metadata"></video>
       <div class="desc">וידאו גדול ונוכח, עם שם הדובר וכפתור הרכישה שמופיעים לכל אורך הסרטון.</div>
       <div class="pick"><label>לבחירת אופציה זו סמנו</label><div class="box"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
