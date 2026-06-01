@@ -120,7 +120,7 @@
 
   <div class="foot">
     <span class="chosen" id="chosen">בחרו אופציה כדי להמשיך</span>
-    <button class="send" id="send" disabled>שליחת הבחירה ←</button>
+    <button class="send" id="send" disabled>שמירת הבחירה ←</button>
   </div>
   <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
 
@@ -137,10 +137,14 @@
       send.disabled=false;
     });
   });
+  var SB='https://opvkmbnazvzfavlkxwzo.supabase.co';
+  var AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9wdmttYm5henZ6ZmF2bGt4d3pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MDIxNzcsImV4cCI6MjA5Mzk3ODE3N30.QdyxpMpbNOC1YhdZdTAV0z4CSEtFwtcdtUiacxD5RDI';
   send.addEventListener('click',function(){
     if(!sel) return;
-    var msg='היי אוריה! בחרנו בגרסת העריכה של מורה הנבוכים: אופציה '+sel+'.';
-    window.open('https://wa.me/972548825232?text='+encodeURIComponent(msg),'_blank');
+    send.disabled=true; send.textContent='שומר...';
+    fetch(SB+'/rest/v1/moreh_choices',{method:'POST',headers:{'apikey':AK,'Authorization':'Bearer '+AK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({choice:sel,ua:(navigator.userAgent||'').slice(0,120)})})
+      .then(function(r){ if(!r.ok) throw new Error(); chosen.innerHTML='<b style="color:var(--teal-deep)">הבחירה נשמרה בהצלחה. תודה רבה!</b>'; send.textContent='נשמר ✓'; })
+      .catch(function(){ send.disabled=false; send.textContent='שמירת הבחירה ←'; chosen.innerHTML='<b style="color:var(--tangerine)">שגיאה בשמירה, נסו שוב</b>'; });
   });
   document.getElementById('wlink').addEventListener('click',function(){
     window.open('https://wa.me/972548825232?text='+encodeURIComponent('היי אוריה אהבתי את התוצרים, אשמח לדבר'),'_blank');
