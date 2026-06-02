@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>מורה הנבוכים · בחירת גרסת עריכה</title>
+<meta property="og:title" content="מורה הנבוכים · הגרסאות המשופרות לבחירה"/>
+<meta property="og:description" content="סרטוני העדות לדיגיטל ולוואטסאפ. בחרו את צבע ההדגשה לקמפיין."/>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --aubergine:#4C1D95; --aubergine-deep:#3B1675; --teal:#0EA5BB; --teal-deep:#0987A0;
+    --tangerine:#FF6B35; --ink:#0A0A0A; --paper:#FAFAFA; --gray:#4A4A4A; --gray-2:#6A6A6A; --line:#E5E5E5;
+    --v-teal:#117BA2; --v-burg:#9D2021;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:var(--paper); color:var(--ink); font-family:'Rubik','Heebo',sans-serif; }
+  .en,[lang="en"]{ font-family:'Plus Jakarta Sans',sans-serif; }
+
+  .top{ background:var(--aubergine); color:#fff; padding:30px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  .top .client{ text-align:right; }
+  .top .client .cl-name{ font-weight:800; font-size:30px; line-height:1.1; color:var(--teal); }
+  .top .client .cl-task{ font-weight:500; font-size:18px; color:#D9CEEF; margin-top:6px; }
+  .top .logo{ text-align:left; }
+  .top .logo .logo-mark{ font-family:'Rubik'; font-weight:800; font-size:30px; line-height:1; }
+  .top .logo .logo-mark .dot{ color:var(--tangerine); }
+  .top .logo .logo-tag{ font-family:'Plus Jakarta Sans'; font-weight:700; font-size:13.5px; letter-spacing:.07em; color:#D9CEEF; margin-top:6px; }
+  .top .logo .logo-tag .y{ color:var(--teal); }
+  .strip{ background:var(--tangerine); height:6px; }
+
+  .intro{ max-width:980px; margin:26px auto 0; padding:0 40px; text-align:center; }
+  .intro p{ font-size:20px; color:var(--ink); font-weight:600; line-height:1.7; }
+  .intro p .sub{ font-size:17px; color:var(--gray-2); font-weight:500; }
+
+  .wrap{ max-width:900px; margin:8px auto 0; padding:0 40px; }
+  .group-h{ margin-top:40px; display:flex; align-items:center; gap:12px; }
+  .group-h .gt{ font-weight:800; font-size:25px; color:var(--aubergine); }
+  .group-h .gl{ flex:1; height:3px; background:var(--line); border-radius:2px; }
+  .speaker{ margin-top:22px; }
+  .speaker .sp-head{ display:flex; align-items:baseline; gap:12px; margin-bottom:14px; border-right:5px solid var(--teal); padding-right:14px; flex-wrap:wrap; }
+  .speaker .sp-head .sp-n{ font-weight:800; font-size:21px; color:var(--ink); }
+  .speaker .sp-head .sp-t{ font-weight:600; font-size:15px; color:var(--gray-2); }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .vcard{ background:#fff; border:2px solid var(--line); border-radius:16px; overflow:hidden; transition:border-color .15s, box-shadow .15s; }
+  .vcard .tag{ display:flex; align-items:center; gap:9px; padding:12px 16px; font-weight:700; font-size:16px; color:var(--ink); }
+  .vcard .tag .sw{ width:22px; height:22px; border-radius:6px; border:2px solid rgba(0,0,0,.06); }
+  .vcard.color-teal .tag .sw{ background:var(--v-teal); }
+  .vcard.color-burg .tag .sw{ background:var(--v-burg); }
+  .vcard video{ width:100%; display:block; background:#000; aspect-ratio:9/16; object-fit:cover; }
+  .vcard .dl{ display:flex; align-items:center; justify-content:center; gap:8px; padding:14px 16px; font-family:'Rubik'; font-weight:700; font-size:15px; color:var(--aubergine); text-decoration:none; border-top:1px solid var(--line); transition:.15s; }
+  .vcard .dl:hover{ background:#F7F3FF; color:var(--aubergine-deep); }
+  .vcard .dl svg{ width:18px; height:18px; flex-shrink:0; }
+  body[data-sel="teal"] .vcard.color-teal{ border-color:var(--teal); box-shadow:0 10px 28px rgba(14,165,187,.26); }
+  body[data-sel="burg"] .vcard.color-burg{ border-color:var(--v-burg); box-shadow:0 10px 28px rgba(157,32,33,.22); }
+
+  .choose-wrap{ max-width:900px; margin:46px auto 0; padding:0 40px; }
+  .choose-ttl{ text-align:center; font-weight:800; font-size:22px; color:var(--aubergine); margin-bottom:18px; }
+  .choose{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .opt{ border:2.5px solid var(--line); border-radius:16px; padding:22px; cursor:pointer; display:flex; align-items:center; gap:14px; background:#fff; transition:.15s; }
+  .opt .sw{ width:44px; height:44px; border-radius:11px; flex-shrink:0; }
+  .opt[data-c="teal"] .sw{ background:var(--v-teal); }
+  .opt[data-c="burg"] .sw{ background:var(--v-burg); }
+  .opt .lbl{ font-weight:800; font-size:20px; color:var(--ink); }
+  .opt .lbl small{ display:block; font-weight:600; font-size:14px; color:var(--gray-2); margin-top:3px; }
+  .opt .chk{ margin-right:auto; width:28px; height:28px; border-radius:8px; border:2.5px solid var(--gray-2); display:flex; align-items:center; justify-content:center; transition:.15s; }
+  .opt .chk svg{ width:17px; height:17px; opacity:0; }
+  body[data-sel="teal"] .opt[data-c="teal"], body[data-sel="burg"] .opt[data-c="burg"]{ border-color:var(--teal); background:#F2FBFD; }
+  body[data-sel="teal"] .opt[data-c="teal"] .chk, body[data-sel="burg"] .opt[data-c="burg"] .chk{ background:var(--teal); border-color:var(--teal); }
+  body[data-sel="teal"] .opt[data-c="teal"] .chk svg, body[data-sel="burg"] .opt[data-c="burg"] .chk svg{ opacity:1; }
+
+  .foot{ max-width:900px; margin:28px auto 50px; padding:0 40px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; }
+  .foot .chosen{ font-size:18px; font-weight:600; color:var(--gray); }
+  .foot .chosen b{ color:var(--aubergine); font-weight:800; }
+  .send{ background:var(--tangerine); color:#fff; border:none; font-family:'Rubik'; font-weight:800; font-size:20px; padding:18px 44px; border-radius:13px; cursor:pointer; transition:.15s; }
+  .send:hover{ background:#E85A28; }
+  .send:disabled{ background:var(--line); color:var(--gray-2); cursor:not-allowed; }
+  .credit{ background:var(--teal); color:#fff; text-align:center; font-size:16px; font-family:'Plus Jakarta Sans'; font-weight:600; padding:28px 20px; margin-top:40px; }
+  .credit a{ color:var(--ink); font-weight:800; text-decoration:underline; text-underline-offset:3px; cursor:pointer; }
+  .credit a .dot{ color:var(--tangerine); text-decoration:none; }
+  .credit .ctag{ display:block; font-size:12.5px; letter-spacing:.08em; color:#CFF1F6; font-weight:600; margin-top:6px; }
+
+  @media (max-width:760px){
+    .pair{ grid-template-columns:1fr; } .choose{ grid-template-columns:1fr; }
+    .top{ flex-direction:column; align-items:flex-start; padding:24px; }
+  }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="client">
+      <div class="cl-name">מפעל משנה תורה</div>
+      <div class="cl-task">מורה הנבוכים · בחירת גרסת עריכה</div>
+    </div>
+    <div class="logo">
+      <div class="logo-mark">אוריה ברמן<span class="dot">.</span></div>
+      <div class="logo-tag en">Strategy <span class="y">·</span> Creative <span class="y">·</span> Digital <span class="y">·</span> AI</div>
+    </div>
+  </div>
+  <div class="strip"></div>
+
+  <div class="intro">
+    <p>מצורפים הסרטונים השונים לבחירה, אישור או הורדה</p>
+  </div>
+
+  <div class="wrap">
+
+    <div class="group-h"><span class="gt">סרטונים לדיגיטל</span><span class="gl"></span></div>
+
+    <div class="speaker">
+      <div class="sp-head"><span class="sp-n">סרטון דיגיטל · פרופ׳ רפאל מינס</span><span class="sp-t">ראש המעבדה לביו-אלקטרומגנטיות, אוניברסיטת אריאל</span></div>
+      <div class="pair">
+        <div class="vcard color-teal"><div class="tag"><span class="sw"></span>הדגשה בטורקיז</div><video src="clips/M-teal.mp4?v=2" controls playsinline preload="metadata"></video><a class="dl" href="dl/M-teal.mp4?v=2" download="מורה הנבוכים - מינס - דיגיטל טורקיז.mp4"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>הורדה באיכות גבוהה</a></div>
+        <div class="vcard color-burg"><div class="tag"><span class="sw"></span>הדגשה בבורדו</div><video src="clips/M-burg.mp4?v=2" controls playsinline preload="metadata"></video><a class="dl" href="dl/M-burg.mp4?v=2" download="מורה הנבוכים - מינס - דיגיטל בורדו.mp4"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>הורדה באיכות גבוהה</a></div>
+      </div>
+    </div>
+
+    <div class="group-h"><span class="gt">סרטונים לוואטסאפ</span><span class="gl"></span></div>
+
+    <div class="speaker">
+      <div class="sp-head"><span class="sp-n">סרטון וואטסאפ · פרופ׳ רפאל מינס</span><span class="sp-t">ראש המעבדה לביו-אלקטרומגנטיות, אוניברסיטת אריאל · בלי כפתור</span></div>
+      <div class="pair">
+        <div class="vcard color-teal"><div class="tag"><span class="sw"></span>הדגשה בטורקיז</div><video src="clips/Mn-teal.mp4?v=2" controls playsinline preload="metadata"></video><a class="dl" href="dl/Mn-teal.mp4?v=2" download="מורה הנבוכים - מינס - וואטסאפ טורקיז.mp4"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>הורדה באיכות גבוהה</a></div>
+        <div class="vcard color-burg"><div class="tag"><span class="sw"></span>הדגשה בבורדו</div><video src="clips/Mn-burg.mp4?v=2" controls playsinline preload="metadata"></video><a class="dl" href="dl/Mn-burg.mp4?v=2" download="מורה הנבוכים - מינס - וואטסאפ בורדו.mp4"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>הורדה באיכות גבוהה</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="choose-wrap">
+    <div class="choose-ttl">איזה צבע הדגשה תרצו לקמפיין?</div>
+    <div class="choose">
+      <div class="opt" data-c="teal"><span class="sw"></span><span class="lbl">הדגשה בטורקיז<small>כפתור ומדבקה בגוון טורקיז</small></span><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+      <div class="opt" data-c="burg"><span class="sw"></span><span class="lbl">הדגשה בבורדו<small>כפתור ומדבקה בגוון הבורדו של המותג</small></span><span class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="chosen" id="chosen">בחרו צבע כדי להמשיך</span>
+    <button class="send" id="send" disabled>שמירת הבחירה ←</button>
+  </div>
+  <div class="credit en" dir="ltr">Built by <a id="wlink">Uria Berman<span class="dot">.</span></a><span class="ctag">Strategy · Creative · Digital · AI</span></div>
+
+<script>
+  var LABELS={teal:'טורקיז',burg:'בורדו'};
+  var sel=null;
+  var chosen=document.getElementById('chosen');
+  var send=document.getElementById('send');
+  document.querySelectorAll('.opt').forEach(function(o){
+    o.addEventListener('click',function(){
+      sel=o.getAttribute('data-c');
+      document.body.setAttribute('data-sel',sel);
+      chosen.innerHTML='בחרתם בהדגשה <b>'+LABELS[sel]+'</b>';
+      send.disabled=false;
+    });
+  });
+  var SB='https://opvkmbnazvzfavlkxwzo.supabase.co';
+  var AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9wdmttYm5henZ6ZmF2bGt4d3pvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0MDIxNzcsImV4cCI6MjA5Mzk3ODE3N30.QdyxpMpbNOC1YhdZdTAV0z4CSEtFwtcdtUiacxD5RDI';
+  send.addEventListener('click',function(){
+    if(!sel) return;
+    send.disabled=true; send.textContent='שומר...';
+    fetch(SB+'/rest/v1/moreh_choices',{method:'POST',headers:{'apikey':AK,'Authorization':'Bearer '+AK,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({choice:sel+'-mins',ua:(navigator.userAgent||'').slice(0,120)})})
+      .then(function(r){ if(!r.ok) throw new Error(); chosen.innerHTML='<b style="color:var(--teal-deep)">הבחירה נשמרה בהצלחה. תודה רבה!</b>'; send.textContent='נשמר ✓'; })
+      .catch(function(){ send.disabled=false; send.textContent='שמירת הבחירה ←'; chosen.innerHTML='<b style="color:var(--tangerine)">שגיאה בשמירה, נסו שוב</b>'; });
+  });
+  document.getElementById('wlink').addEventListener('click',function(){
+    window.open('https://wa.me/972548825232?text='+encodeURIComponent('היי אוריה אהבתי את התוצרים, אשמח לדבר'),'_blank');
+  });
+</script>
+</body>
+</html>
